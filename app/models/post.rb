@@ -8,16 +8,18 @@ class Post < ApplicationRecord
   before_save :create_category_from_name
 
 
-def create_category_from_name
-    create_category(name: new_category_name) unless new_category_name.blank?
-end
+  scope :visible, -> { where(published: true) }
 
-def category_name=(name)
-  self.category = Category.find_or_create_by(name: name)
-end
+  def create_category_from_name
+      create_category(name: new_category_name) unless new_category_name.blank?
+  end
 
-def category_name
-   self.category ? self.category.name : nil
-end
+  def category_name=(name)
+    self.category = Category.find_or_create_by(name: name)
+  end
+
+  def category_name
+     self.category ? self.category.name : nil
+  end
 
 end
