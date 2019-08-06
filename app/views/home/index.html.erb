@@ -1,0 +1,10 @@
+
+
+    <% @posts.each do |post| %>
+    <div class="border border-gray-400 bg-white rounded p-4 flex flex-col justify-between leading-normal m-2">
+      <div class="border-b border-grey-light py-3">
+      <%= link_to(post.title, post, class: "inline-block align-middle text-4xl text-green-900") %> <br> <%= content_tag(:div,time_ago_in_words(post.created_at), class: " inline-block align-middle text-sm text-gray-600") + " category:" + content_tag(:div,post.category.name, class: " inline-block align-middle text-sm text-gray-600")%>
+      </div>
+      <%= content_tag(:div,raw(post.body), class: "m-3 leading-relaxed") %>
+    </div>
+    <% end %>
