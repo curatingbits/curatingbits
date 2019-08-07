@@ -10,7 +10,7 @@ class Post < ApplicationRecord
 
   scope :visible, -> { where(published: true).reorder(created_at: :desc) }
 
-  scope :category, -> (category_id){ includes(:category).where(categories: {id: category_id}).where(published: true).reorder(created_at: :desc) if category_id.present? }
+  scope :category, -> (category_id) {includes(:category).where(categories: {id: category_id}).where(published: true).reorder(created_at: :desc) if category_id.present? }
 
 
   def create_category_from_name
