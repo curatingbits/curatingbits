@@ -1,14 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
+<div class="border border-gray-400 bg-white rounded p-4 flex flex-col justify-between leading-normal m-2">
+  <div class="border-b border-grey-light py-3">
+    <%= @post.title %>
+  </div>
   <%= @post.body %>
-</p>
+</div>
 
 
 

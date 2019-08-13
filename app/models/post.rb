@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
   validates :title, presence: true
-  validates_associated :category
+
   has_rich_text :body
-  belongs_to :category, required: true
+  belongs_to :category, optional: true
 
   attr_accessor :new_category_name
   before_save :create_category_from_name

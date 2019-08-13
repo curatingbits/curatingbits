@@ -37,7 +37,9 @@
       </a>
     </div>
     <div>
-      <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Download</a>
+
+
+      <% if admin_signed_in? %><a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"></a><%end%>
     </div>
   </div>
   </nav>
@@ -72,10 +74,11 @@
   </div>
 
 
-        <h3>Categories</h3>
-        <ul class="list-disc list-inside">
+
+        <ul class="list-inside mt-3">
+          <h3 class="border-b  bordger-gray-400 text-green-900 pb-3">Categories</h3>
           <% Category.all.each do |cat| %>
-            <%= content_tag(:li, link_to(cat.name, home_path(:category_id => (cat.id)))) %>
+            <%= content_tag(:li, link_to(cat.name, home_path(:category_id => (cat.id))), class: "text-xs text-blue-900") %>
           <% end %>
         </ul>
       </div>
