@@ -1,0 +1,20 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "volumes": [],
+  "containerDefinitions": [
+    {
+      "name": "app",
+      "image": ".dkr.ecr.us-east-1.amazonaws.com/curatingbits:latest",
+      "environment": [],
+      "essential": true,
+      "memory": 128,
+      "mountPoints": [],
+      "portMappings": [
+        {
+          "containerPort": 3000,
+          "hostPort": 80
+        }
+      ]
+    }
+  ]
+}

@@ -1,12 +1,16 @@
 <p id="notice"><%= notice %></p>
-  <%= link_to 'Edit', edit_post_path(@post) %>
-  <%= link_to 'Back', posts_path %>
 <div class="border border-gray-400 bg-white rounded p-4 flex flex-col justify-between leading-normal m-2">
   <div class="border-b border-grey-light py-3">
     <div class= "inline-block align-middle text-4xl text-green-900">
       <%= @post.title %>
     </div>
+    <div class="text-2sm text-gray-300 "><%= time_ago_in_words(@post.created_at) %>  ago| Category: <%= @post.category.name %></div>
   </div>
-
-  <%= @post.body %>
+  <div class="mt-4">
+    <%= @post.body %>
+  </div>
+  
+<% if  admin_signed_in? %><%= link_to 'Edit', edit_post_path(@post) %><%end%>
 </div>
+<%= link_to 'Back', home_path %>
+

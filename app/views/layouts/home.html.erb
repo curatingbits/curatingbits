@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CuratingBits</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,7 +17,7 @@
       <div class="flex items-center flex-shrink-0 text-white mr-6">
         <svg class="fill-current h-10 w-90 mr-2" width="90" height="64" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path class="st0" d="M20.09,21.64v-2h19.97v2h-7.99v13.98h7.99v2H20.09v-2h7.99V21.64H20.09z"/>
           <path class="st0" d="M56.04,23.64v-2h2v-2h3.99v2h-2v2h-2v2h-2v2h-2v2h-2v2h-2v2h-2v2h-2v2h-3.99v-2h2v-2h2v-2h2v-2h2v-2h2v-2h2v-2
-                       H56.04z"/>
+                           H56.04z"/>
           <path class="st0" d="M66.02,21.64v-2H82v2h2v13.98h-2v2H66.02v-2h-2V21.64H66.02z M80.01,35.62V21.64H68.02v13.98H80.01z"/></svg>
         <span class="font-semibold text-xl tracking-tight"><%= link_to("CuratingBits", home_path) %></span>
       </div>
@@ -22,7 +25,7 @@
         <button class="navbar-burger flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
           <svg class="fill-current h-3 w-3" viewBox="0 0 55 32" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
         </button>
-      </div>
+      
       <div id="main-nav" class="w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden">
         <div class="text-sm lg:flex-grow">
           <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
@@ -43,13 +46,13 @@
       </div>
     </nav>
 
-    <div class="container mx-auto">
-      <div class="flex sm:flex-row-reverse md:flex-row lg:flex-row mb-4 m-3">
-        <div class=" lg:w-3/4 sm:w-2/3 h-12 m-2">
+
+      <div class="flex flex-wrap">
+        <div class="w-full md:1/3 lg:w-3/4">
           <%= yield %>
         </div>
-        <div class="lg:w-1/4 sm:w-1/4 h-12 ml-4 px-4 m-2">
-          <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+        <div class="w-full md:2/3 lg:w-1/4">
+          <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal mx-3 mt-2">
             <div class="mb-8">
               <div class="text-gray-900 font-bold text-xl mb-2">About Me</div>
               <p class="text-gray-700 text-base">Coffee, .</p>
@@ -63,17 +66,30 @@
                 <p class="text-gray-600 text-xs">Twitter: @dugganroberts</p>
               </div>
             </div>
-            </div>
+          </div>
 
 
-          <ul class="list-inside mt-3">
+
+          <ul class="list-inside mt-3 mx-3 bg-gray-400 p-3">
             <h3 class="border-b  bordger-gray-400 text-green-900 pb-3">Categories</h3>
+            <div class="mt-2">
             <% Category.all.each do |cat| %>
               <%= content_tag(:li, link_to(cat.name, home_path(:category_id => (cat.id))), class: "text-xs text-blue-900") %>
             <% end %>
+            </div>
           </ul>
         </div>
       </div>
+
+    <div class="flex">
+      <div class="w-full">
+    <section class="w-full flex bg-gray-300  py-24 px-6 text-center">
+        <div class="max-w-full text-grey-darker text-center">
+          <h1 class="text-2xl font-thin text-center">Copyright Duggan Roberts <%= Time.current.year %></h1>
       </div>
+    </section>
+</div>
+</div>
+
   </body>
 </html>
