@@ -1,70 +1,34 @@
-# Setup linux packages
-option_settings:
-  - option_name: BUNDLE_DISABLE_SHARED_GEMS
-    value: "1"
-  - option_name: BUNDLE_PATH
-    value: "vendor/bundle"
+files:
+  "/opt/elasticbeanstalk/hooks/appdeploy/pre/09_yarn.sh" :
+    mode: "000755"
+    owner: root
+    group: root
+    content: |
+      #!/usr/bin/env bash
+      set -xe
 
-packages:
-  yum:
-    curl: []
-    git: []
-    gcc: []
-    epel-release: []
-    ruby-devel: []
-    make: []
-    ruby-irb: []
-    libyaml-devel: []
-    libxml2: []
-    libxml2-devel: []
-    libxslt: []
-    libxslt-devel: []
-    openssl-devel: []
-    libffi-devel: []
-    mysql: []
-    mysql-devel: []
-    zlib: []
-    zlib-devel: []
-    patch: []
-    readline: []
-    readline-devel: []
-    libyaml-devel: []
-    bzip2: []
-    autoconf: []
-    automake: []
-    gcc-c++: []
-    libtool: []
-    bison: []
+      EB_SCRIPT_DIR=$(/opt/elasticbeanstalk/bin/get-config container -k script_dir)
+      EB_APP_STAGING_DIR=$(/opt/elasticbeanstalk/bin/get-config container -k app_staging_dir)
+      EB_APP_USER=$(/opt/elasticbeanstalk/bin/get-config container -k app_user)
+      EB_SUPPORT_DIR=$(/opt/elasticbeanstalk/bin/get-config container -k support_dir)
 
-commands:
-  01_node_get:
-    # run this command from /tmp directory
-    cwd: /tmp
-    # flag -y for no-interaction installation
-    command: 'curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -'
+      . $EB_SUPPORT_DIR/envvars
+      . $EB_SCRIPT_DIR/use-app-ruby.sh
 
-  02_node_install:
-    # run this command from /tmp directory
-    cwd: /tmp
-    command: 'sudo yum -y install nodejs'
+      # Install nodejs
+      echo "install nodejs"
+      curl --silent --location https://rpm.nodesource.com/setup_6.x | sudo bash -
+      yum -y install nodejs
+      echo "install yarn"
+      # install yarn
+      wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo;
+      yum -y install yarn;
 
-  03_yarn_get:
-    # run this command from /tmp directory
-    cwd: /tmp
-    # don't run the command if yarn is already installed (file /usr/bin/yarn exists)
-    test: '[ ! -f /usr/bin/yarn ] && echo "yarn not installed"'
-    command: 'sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo'
+      # yarn install
+      cd $EB_APP_STAGING_DIR
+      yarn
 
-  04_yarn_install:
-    # run this command from /tmp directory
-    cwd: /tmp
-    test: '[ ! -f /usr/bin/yarn ] && echo "yarn not installed"'
-    command: 'sudo yum -y install yarn'
-
-  05_home_dir:
-    test: '[ ! -p /home/webapp ] && echo "webapp not exited"'
-    command: 'sudo mkdir -p /home/webapp'
-
-  06_grant_home_dir:
-    test: '[ ! -p /home/webapp ] && echo "webapp not exited"'
-    command: 'sudo chmod 777 /home/webapp'
+      # mkdir /home/webapp
+      mkdir -p /home/webapp
+      chown webapp:webapp /home/webapp
+      chmod 700 /home/webapp
