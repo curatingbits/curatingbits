@@ -1,0 +1,3 @@
+RDS_DB_NAME: 'curatingbits'
+RDS_USERNAME: 'curatingbits'
+RDS_PASSWORD: 'Ruby.408'
