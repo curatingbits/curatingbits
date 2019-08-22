@@ -83,10 +83,8 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-    adapter: postgresql
-    encoding: unicode
-    host: "aaeyf08cgre8ow.ccbl9k3sm1s3.us-east-2.rds.amazonaws.com"
-    pool: 5
-    database: <%= ENV['RDS_DB_NAME'] %>
-    username: <%= ENV['RDS_USERNAME'] %>
-    password: <%= ENV['RDS_PASSWORD'] %>
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>

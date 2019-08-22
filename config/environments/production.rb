@@ -2,8 +2,8 @@ Rails.application.configure do
 
 config.hosts << "curatingbits2-dev.us-east-2.elasticbeanstalk.com"
   # Settings specified here will take precedence over those in config/application.rb.
-config.hosts << "localhost"
-config.hosts << "curatingbits2-dev2.us-east-2.elasticbeanstalk.com"
+config.secret_key_base = ENV["SECRET_KEY_BASE"]
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
