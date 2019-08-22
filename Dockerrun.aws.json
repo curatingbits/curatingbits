@@ -1,9 +1,12 @@
-{
+echo '{
   "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "curatingbits",
+    "Update": "false"
+  },
   "Ports": [
     {
-      "ContainerPort": "80"
+      "ContainerPort": "8080"
     }
-  ],
-  "Logging": "/home/app/myapp/log"
-}
+  ]
+}'|jq -c '.Volumes[]?|[.HostDirectory,.ContainerDirectory]'
