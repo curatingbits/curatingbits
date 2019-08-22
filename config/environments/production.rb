@@ -1,4 +1,6 @@
 Rails.application.configure do
+
+config.hosts << "curatingbits2-dev.us-east-2.elasticbeanstalk.com"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
