@@ -1,11 +1,21 @@
 {
+  "AWSEBDockerrunVersion": "1",
   "Image": {
-    "Name": "curatingbits"
+    "Name": "janedoe/image",
+    "Update": "true"
   },
   "Ports": [
     {
-      "ContainerPort": 8080,
-      "HostPort": 8000
+      "ContainerPort": "1234"
     }
-  ]
+  ],
+  "Volumes": [
+    {
+      "HostDirectory": "/var/app/mydb",
+      "ContainerDirectory": "/etc/mysql"
+    }
+  ],
+  "Logging": "/var/log/nginx",
+  "Entrypoint": "/app/bin/myapp",
+  "Command": "--argument"
 }
