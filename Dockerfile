@@ -16,7 +16,7 @@ RUN rm -Rf node_modules/
 RUN rm yarn.lock
 RUN yarn install --check-files
 
-ENV RAILS_ENV=development
+ENV RAILS_ENV=production
 EXPOSE 3000
 
 # Start the main process.
