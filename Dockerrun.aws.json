@@ -1,7 +1,11 @@
 {
-  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "curatingbits"
+  },
   "Ports": [
-    { "ContainerPort": "3000" }
-  ],
-  "Logging": "/myapp/log"
+    {
+      "ContainerPort": 8080,
+      "HostPort": 8000
+    }
+  ]
 }
