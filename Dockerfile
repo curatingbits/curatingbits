@@ -11,7 +11,7 @@ COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
 
-COPY . /myapp
+ADD . /myapp
 RUN rm -Rf node_modules/
 RUN rm yarn.lock
 RUN yarn install --check-files
