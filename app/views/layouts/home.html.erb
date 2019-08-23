@@ -25,7 +25,7 @@
         <button class="navbar-burger flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
           <svg class="fill-current h-3 w-3" viewBox="0 0 55 32" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
         </button>
-      
+
       <div id="main-nav" class="w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden">
         <div class="text-sm lg:flex-grow">
           <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
@@ -58,7 +58,8 @@
               <p class="text-gray-700 text-base">Coffee, .</p>
             </div>
             <div class="flex items-center">
-              <img class="w-20 h-20 rounded-full mr-4" src="/assets/dugganroberts.JPG" alt="Avatar of Duggan Roberts">
+              <%= image_tag("dugganroberts.JPG", class: "w-20 h-20 rounded-full mr-4") %>
+
               <div class="text-sm">
                 <p class="text-gray-900 leading-none border-b border-gray-400 pb-2">Duggan Roberts</p>
                 <p class="text-gray-600 text-xs"><span class="text-green-600">Github:</span><span class="text-blue-900"> @curatingbits_ </span></p>

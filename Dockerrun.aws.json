@@ -1,12 +1,12 @@
 {
-
-    "AWSEBDockerrunVersion": "1",
-    "Ports": [
-        {
-            "ContainerPort":"80"
-        }
-    ],
-    "Volumes":{
-
+  "AWSEBDockerrunVersion": "2",
+  "Image": {
+    "Name": "curatingbits",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "80"
     }
+  ]
 }

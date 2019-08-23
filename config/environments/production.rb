@@ -1,6 +1,6 @@
 Rails.application.configure do
 
-config.hosts << "curatingbits2-dev.us-east-2.elasticbeanstalk.com"
+config.hosts << "localhost"
   # Settings specified here will take precedence over those in config/application.rb.
 config.secret_key_base = ENV["SECRET_KEY_BASE"]
 
