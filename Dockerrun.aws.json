@@ -1,12 +1,79 @@
 {
-    "AWSEBDockerrunVersion": "1",
-    "Image": {
-      "Name": "drobsokc/curatingbits",
-      "Update": "true"
+  "AWSEBDockerrunVersion": 2,
+"containerDefinitions": [
+    {
+        "name": "app",
+                    "image": "drobsokc/curatingbits:latest",
+        "essential": true,
+        "mountPoints": [
+            {
+                "containerPath": "/var/www/curatingbits",
+                "sourceVolume": "_"
+            }
+        ],
+        "portMappings": [
+            {
+                "containerPort": 3000,
+                "hostPort": 3000
+            }
+        ],
+        "workingDirectory": "/var/www/curatingbits",
+                    "links": ["db"],
+              "memory": 128
     },
-    "Ports": [
-      {
-        "ContainerPort": "80"
-      }
-    ]
+    {
+        "name": "db",
+        "essential": true,
+        "image": "postgres:10.3-alpine",
+        "mountPoints": [
+            {
+                "containerPath": "/var/lib/postgresql/data",
+                "sourceVolume": "postgres"
+            }
+        ],
+        "portMappings": [
+            {
+                "containerPort": 5432,
+                "hostPort": 5432
+            }
+        ],
+              "memory": 128
+    },
+    {
+        "name": "web",
+        "essential": true,
+              "memory": 128,
+                    "image": "nginx",
+        "mountPoints": [
+            {
+                "containerPath": "/var/log/containers/nginx",
+                "sourceVolume": "_"
+            }
+        ],
+        "portMappings": [
+            {
+                "containerPort": 80,
+                "hostPort": 80
+            }
+        ],
+        "workingDirectory": "/app",
+                    "links": ["app"],
+              "memory": 128
+    }
+],
+"family": "",
+"volumes": [
+    {
+        "host": {
+            "sourcePath": "/var/www/curatingbits"
+        },
+        "name": "_"
+    },
+    {
+        "host": {
+            "sourcePath": "postgres"
+        },
+        "name": "postgres"
+    }
+]
 }
