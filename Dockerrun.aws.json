@@ -1,9 +1,12 @@
 {
-  "AWSEBDockerrunVersion": "1",
-  "Ports": [
-    {
-      "ContainerPort": "80"
-    }
-  ],
-  "Logging": "/var/www/curatingbits/log"
+    "AWSEBDockerrunVersion": "1",
+    "Image": {
+      "Name": "drobsokc/curatingbits",
+      "Update": "true"
+    },
+    "Ports": [
+      {
+        "ContainerPort": "80"
+      }
+    ]
 }
