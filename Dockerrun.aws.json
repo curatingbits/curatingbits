@@ -1,5 +1,5 @@
 echo '{
-  "AWSEBDockerrunVersion": "1",
+  "AWSEBDockerrunVersion": "2",
   "Image": {
     "Name": "curatingbits",
     "Update": "false"
