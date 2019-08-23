@@ -1,32 +1,12 @@
-
-
 {
-    "AWSEBDockerrunVersion": 2,
-    "containerDefinitions": [
-        {
-            "name": "web",
-            "image": "nginx",
-            "memory": 128,
-            "portMappings": [
-                {
-                    "hostPort": 8080,
-                    "containerPort": 8080
-                }
-            ],
-            "links": [
-                "app"
-            ]
-        },
-        {
-            "name": "app",
-            "image": "drobsokc/curatingbits",
-            "memory": 128,
-            "portMappings": [
-                {
-                    "hostPort": 3000,
-                    "containerPort": 3000
-                }
-            ]
-        }
+    "AWSEBDockerrunVersion": "1",
+    "Image": {
+      "Name": "drobsokc/curatingbits",
+      "Update": "true"
+    },
+    "Ports": [
+      {
+        "ContainerPort": "3000"
+      }
     ]
 }
